@@ -39,7 +39,6 @@
     <script>
       var app = angular.module('app', ["ui.router",'angularMoment']);
       app.config(function($stateProvider, $urlRouterProvider){
-        
         function range(l,h,s){
           if(!h)
           {
@@ -61,12 +60,12 @@
           .state('index', {
               url: "/",
               templateUrl: "watchmaker.html",
-              controller:function ($scope,$interval,$angularMoment) {
+              controller:function ($scope,$interval) {
                 $scope.dates = range(1,31);
                 $scope.years = range(1990,2100);
                 $scope.hours = range(1,12,'pad');
-                $scope.minutes = range(0,60,'pad');
-                $scope.seconds = range(0,60,'pad');
+                $scope.minutes = range(0,59,'pad');
+                $scope.seconds = range(0,59,'pad');
                 $scope.months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Nov','Dec'];
                 $scope.periods = ['AM','PM'];
                 $scope.sdate = $scope.dates[0];
@@ -76,9 +75,20 @@
                 $scope.ssecond = $scope.seconds[0];
                 $scope.smonth = $scope.months[0];
                 $scope.speriod = $scope.periods[0];
-                $scope.timer = moment("10/15/"+$scope.syear+" 9:00", "M/D/YYYY H:mm").valueOf();
-                $scope.now = new Date();
-                $interval(function() { $scope.timer=$scope.timer-1; },10);
+
+                $scope.mstime = moment($scope.smonth+"/"+$scope.sdate+"/"+$scope.syear+" "+$scope.shour+":"+$scope.sminute+":"+$scope.ssecond+" "+$scope.speriod, "MMMM/D/YYYY hh:mm:ss a").valueOf();
+                
+                $scope.$watch('[age,name]', function (newValue, oldValue) {
+                    var newAge  = newValue[0];
+                    var newName = newValue[1];
+                    var oldAge  = oldValue[0];
+                    var oldName = oldValue[1];
+                }, true);
+                $interval(function() {
+                  // $scope.mstime = moment($scope.smonth+"/"+$scope.sdate+"/"+$scope.syear+" "+$scope.shour+":"+$scope.sminute+":"+$scope.ssecond+" "+$scope.speriod, "MMMM/D/YYYY hh:mm:ss a").valueOf();
+                  $scope.timenow=moment().valueOf();
+                  $scope.daysfrom=(($scope.mstime-$scope.timenow)/1000/60/60/24/365).toFixed(9);
+                },100);
 
               }
           })

@@ -1,4 +1,4 @@
-
+<div style="text-align: center;">
   <select class="form-control select" ng-model='smonth'>
     <option ng-repeat="month in months">{{month}}</option>
   <select>
@@ -23,5 +23,5 @@
   </select>
 </div>
 <br/>
-<a ui-sref="timer" target="_blank">Show List {{syear}} <span am-time-ago="'{{syear}}.04.25 22:00:15' | amParse:'YYYY.MM.DD HH:mm:ss'"></span> </a>
+<a ui-sref="timer" target="_blank">{{daysfrom}} </a>
 <div ui-view></div>

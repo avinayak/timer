@@ -1,27 +1,35 @@
+<div id="t-uppertext">
+  <select class="t-counter-types" ng-model='stype'>
+    <option ng-repeat="counter in countertypes" value="{{counter.type}}">{{counter.text}}</option>
+  </select>
+  <span class="t-static-text">{{fromto}}</span>
+</div>
 <div style="text-align: center;">
-  <select class="form-control select" ng-model='smonth'>
+  <select class="form-control select t-select" ng-model='smonth'>
     <option ng-repeat="month in months">{{month}}</option>
   <select>
-  <select class="form-control select" ng-model='sdate'>
+  <select class="form-control select t-select" ng-model='sdate'>
     <option ng-repeat="date in dates">{{date}}</option>
   </select>
-  <select class="form-control select" ng-model='syear'>
+  <select class="form-control select t-select" ng-model='syear'>
     <option ng-repeat="year in years">{{year}}</option>
   </select>
   <span></span>
-  <select class="form-control select" ng-model='shour'>
+  <select class="form-control select t-select" ng-model='shour'>
     <option ng-repeat="hour in hours">{{hour}}</option>
   </select>
-  <select class="form-control select" ng-model='sminute'>
+  <span class="t-colonsep"></span>
+  <select class="form-control select t-select" ng-model='sminute'>
     <option ng-repeat="minute in minutes">{{minute}}</option>
   </select>
-  <select class="form-control select" ng-model='ssecond'>
+<!--   <span class="t-colonsep">:</span> -->
+  <select class="form-control select t-select" ng-model='ssecond'>
     <option ng-repeat="second in seconds">{{second}}</option>
   </select>
-  <select class="form-control select" ng-model='speriod'>
+  <select class="form-control select t-select" ng-model='speriod'>
     <option ng-repeat="period in periods">{{period}}</option>
   </select>
 </div>
 <br/>
-<a ui-sref="timer" target="_blank">{{daysfrom}} </a>
-<div ui-view></div>
+<div class="t-sample-link"><a ui-sref="timer" target="_blank">{{daysfrom}}</a></div>
+

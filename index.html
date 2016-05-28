@@ -21,14 +21,34 @@
             margin-left: auto;
             margin-right: auto; 
         }
-
-        .select{
+        .t-counter-types{
+            border: none;
+            border-bottom: 1px solid #aaa;
+            border-radius: 0px;
+            margin-bottom: 2px;
+        }
+        .t-select{
             width:auto;
-            font-size: 48px;
+            font-size: 74px;
             height: auto;
             border: none;
-            border-bottom: 1px solid #ddd;
+            padding: 0px;
+            border-bottom: 1px solid #aaa;
+            /*border-right: 13px solid #fff;*/
             border-radius: 0px;
+        }
+        .t-colonsep{
+            font-size: 74px;
+            color: #555;
+        }
+        .t-sample-link{
+            text-align: right;
+        }
+        .t-static-text{
+            padding: 20px;
+        }
+        #t-uppertext{
+            /*margin-bottom: 20px; */         
         }
     </style>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.js"></script>
@@ -61,6 +81,11 @@
               url: "/",
               templateUrl: "watchmaker.html",
               controller:function ($scope,$interval) {
+                $scope.countertypes=[
+                  {type:'hours',text:'Hours'},
+                  {type:'days',text:'Days'},
+                  {type:'years',text:'Years'},
+                ];
                 $scope.dates = range(1,31);
                 $scope.years = range(1990,2100);
                 $scope.hours = range(1,12,'pad');
@@ -75,19 +100,24 @@
                 $scope.ssecond = $scope.seconds[0];
                 $scope.smonth = $scope.months[0];
                 $scope.speriod = $scope.periods[0];
+                $scope.stype = $scope.countertypes[0].type;
 
-                $scope.mstime = moment($scope.smonth+"/"+$scope.sdate+"/"+$scope.syear+" "+$scope.shour+":"+$scope.sminute+":"+$scope.ssecond+" "+$scope.speriod, "MMMM/D/YYYY hh:mm:ss a").valueOf();
-                
-                $scope.$watch('[age,name]', function (newValue, oldValue) {
-                    var newAge  = newValue[0];
-                    var newName = newValue[1];
-                    var oldAge  = oldValue[0];
-                    var oldName = oldValue[1];
-                }, true);
-                $interval(function() {
-                  // $scope.mstime = moment($scope.smonth+"/"+$scope.sdate+"/"+$scope.syear+" "+$scope.shour+":"+$scope.sminute+":"+$scope.ssecond+" "+$scope.speriod, "MMMM/D/YYYY hh:mm:ss a").valueOf();
+                $scope.diff = 0;
+                $scope.fromto = "from";
+                $scope.$watch('[smonth,sdate,syear,shour,smiute,ssecond,speriod]', function (newv, oldv) {
+                  $scope.mstime = moment(newv[0]+"/"+newv[1]+"/"+newv[2]+" "+newv[3]+":"+newv[4]+":"+newv[5]+" "+newv[6], "MMMM/D/YYYY hh:mm:ss a").valueOf();
                   $scope.timenow=moment().valueOf();
-                  $scope.daysfrom=(($scope.mstime-$scope.timenow)/1000/60/60/24/365).toFixed(9);
+                  if($scope.mstime-$scope.timenow > 0){
+                      $scope.fromto="to";
+                  }else{
+                      $scope.fromto="from";
+                  }
+                }, true);
+
+                $interval(function() {
+                  $scope.timenow=moment().valueOf();
+                  $scope.diff=$scope.mstime-$scope.timenow;
+                  $scope.daysfrom=(($scope.diff)/1000/60/60/24/365).toFixed(9);
                 },100);
 
               }

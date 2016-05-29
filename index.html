@@ -100,11 +100,15 @@
                 $scope.smonth = $scope.months[0];
                 $scope.speriod = $scope.periods[0];
                 $scope.stype = $scope.countertypes[0].type;
-
                 $scope.diff = 0;
                 $scope.fromto = "from";
-                $scope.$watch('[smonth,sdate,syear,shour,smiute,ssecond,speriod]', function (newv, oldv) {
-                  $scope.mstime = moment(newv[0]+"/"+newv[1]+"/"+newv[2]+" "+newv[3]+":"+newv[4]+":"+newv[5]+" "+newv[6], "MMMM/D/YYYY hh:mm:ss a").valueOf();
+
+                // $scope.$watch('stype', function(newv, oldv) {
+                  
+                // }, true);
+
+                $scope.$watch('[smonth,sdate,syear,shour,sminute,ssecond,speriod]', function (newv, oldv) {
+                  $scope.mstime = moment(newv[0]+"/"+newv[1]+"/"+newv[2]+" "+newv[3]+":"+newv[4]+":"+newv[5]+" "+newv[6], "MMMM/D/YYYY hh:mm:ss a");
                   $scope.timenow=moment().valueOf();
                   if($scope.mstime-$scope.timenow > 0){
                       $scope.fromto="to";
@@ -114,9 +118,9 @@
                 }, true);
 
                 $interval(function() {
-                  $scope.timenow=moment().valueOf();
-                  $scope.diff=$scope.mstime-$scope.timenow;
-                  $scope.daysfrom=(($scope.diff)/1000/60/60/24/365).toFixed(9);
+                  $scope.timenow=moment();
+                  $scope.diff=$scope.timenow.diff($scope.mstime);
+                  $scope.stimervalue=$scope.diff;//=(($scope.diff)/1000/60/60/24/365).toFixed(9);
                 },100);
 
               }

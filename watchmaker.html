@@ -11,9 +11,10 @@
   <select class="form-control select t-select" ng-model='sdate'>
     <option ng-repeat="date in dates">{{date}}</option>
   </select>
-  <select class="form-control select t-select" ng-model='syear'>
+  <!-- <select class="form-control select t-select" ng-model='syear'>
     <option ng-repeat="year in years">{{year}}</option>
-  </select>
+  </select> -->
+  <input id="t-year-field" maxlength="4" class="t-select" type="text" name="usrname" maxlength="10" value="{{year}}" ng-model='syear'>
   <span class="t-hor-space">&nbsp</span>
   <select class="form-control select t-select" ng-model='shour'>
     <option ng-repeat="hour in hours">{{hour}}</option>
@@ -32,13 +33,13 @@
 </div>
 <br/>
 <div class="t-sample-link">
-  <input class="t-surr-text-left" type="text"/>
+  <input class="t-surr-text-left" type="text" ng-model="lefttext" />
   <span class="t-timertext">{{stimervalue}}</span>
-  <input class="t-surr-text-right" type="text"/>
+  <input class="t-surr-text-right" type="text" ng-model="righttext"/>
 </div>
 
 <div id="t-newwindow">
-  <a href="">
+  <a href="#{{stype}}/{{lefttext}}/{{mstime.valueOf()}}/{{righttext}}" target="_blank">
     <svg fill="#555" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 0h24v24H0z" fill="none"/>
         <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>

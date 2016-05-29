@@ -85,8 +85,8 @@
             margin: 40px;
         }
         #t-clock{
-          font-size: 124px;
-          line-height: 129px;
+          font-size: 100px;
+          line-height: 100px;
         }
     </style>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.js"></script>
@@ -98,6 +98,7 @@
     <script>
       var app = angular.module('app', ["ui.router",'angularMoment']);
       app.config(function($stateProvider, $urlRouterProvider){
+
         function range(l,h,s){
           if(!h)
           {
@@ -145,8 +146,18 @@
             }
             return out.replace("-","");
         }
+        
         $urlRouterProvider.otherwise("/");
         
+        // Suggestion welcome :)
+        var random_events=[
+          {month:'Dec',date:'28',year:'1993',hour:'10',minute:'01',second:'00',period:'PM',type:'ya',left:'It\'s',right:'Years since I was born.'},
+          {month:'Dec',date:'28',year:'2016',hour:'10',minute:'01',second:'00',period:'PM',type:'d',left:'You have',right:'Days till your next Birthday.'},
+          {month:'Jul',date:'20',year:'2020',hour:'12',minute:'00',second:'00',period:'AM',type:'d',left:'Tokyo Olympics will commence in',right:'Days.'},
+          {month:'Jul',date:'20',year:'1969',hour:'10',minute:'56',second:'00',period:'PM',type:'ts',left:'',right:'has passed since man landed on the moon.'},
+        ];
+
+
         $stateProvider
           .state('index', {
               url: "/",
@@ -174,18 +185,20 @@
                 $scope.seconds = range(0,59,'pad');
                 $scope.months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Nov','Dec'];
                 $scope.periods = ['AM','PM'];
-                $scope.sdate = $scope.dates[0];
-                $scope.syear = $scope.years[0];
-                $scope.shour = $scope.hours[11];
-                $scope.sminute = $scope.minutes[0];
-                $scope.ssecond = $scope.seconds[0];
-                $scope.smonth = $scope.months[0];
-                $scope.speriod = $scope.periods[0];
-                $scope.stype = $scope.countertypes[0].type;
+                var randev = random_events[Math.floor(Math.random() * random_events.length)];
+
+                $scope.sdate = randev.date;
+                $scope.syear = randev.year;
+                $scope.shour = randev.hour;
+                $scope.sminute = randev.minute;
+                $scope.ssecond = randev.second;
+                $scope.smonth = randev.month;
+                $scope.speriod = randev.period;
+                $scope.stype = randev.type;
                 $scope.diff = 0;
                 $scope.fromto = "from";
-                $scope.lefttext="";
-                $scope.righttext="";
+                $scope.lefttext=randev.left;
+                $scope.righttext=randev.right;
 
 
 

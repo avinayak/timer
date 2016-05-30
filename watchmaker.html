@@ -3,8 +3,6 @@
     <option ng-repeat="counter in countertypes" value="{{counter.type}}">{{counter.text}}</option>
   </select>
   <span class="t-static-text">{{fromto}}</span>
-</div>
-<div style="text-align: center;">
   <select class="form-control select t-select" ng-model='smonth'>
     <option ng-repeat="month in months">{{month}}</option>
   <select>
@@ -31,12 +29,15 @@
     <option ng-repeat="period in periods">{{period}}</option>
   </select>
 </div>
-<br/>
-<div class="t-sample-link">
-  <input class="t-surr-text-left" type="text" ng-model="lefttext" />
-  <span class="t-timertext">{{stimervalue}}</span>
-  <input class="t-surr-text-right" type="text" ng-model="righttext"/>
+<div >
+  
 </div>
+<br/>
+<h1 class="t-sample-link">
+  <span contenteditable="true" class="t-surr-text t-surr-text-left" type="text" ng-model="lefttext" >{{lefttext}}</span>
+  <span class="t-timertext">{{stimervalue}}</span>
+  <span contenteditable="true" class="t-surr-text t-surr-text-right" type="text" ng-model="righttext">{{righttext}}</span>
+</h1>
 
 <div id="t-newwindow">
   <a href="#{{stype}}/{{lefttext}}/{{mstime.valueOf()}}/{{righttext}}" target="_blank">

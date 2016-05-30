@@ -39,18 +39,16 @@
         }
         .t-select{
             width:auto;
-            font-size: 70px;
             height: auto;
             border: none;
-            padding: 0px;
+            margin-bottom: 2px;
 /*            border-bottom: 1px solid #aaa;
             border-radius: 0px;*/
         }
         #t-year-field {
-            font-size: 70px;
-            height: 80px;
-            width: 160px;
-            padding-bottom: 15px;
+            width: 32px;
+            box-shadow: none;
+            padding-bottom: 5px;
             border: none;
         }
         .t-colonsep{
@@ -58,13 +56,12 @@
             color: #555;
         }
         .t-sample-link{
-            text-align: center;
+            text-align: left;
         }
         .t-static-text{
             padding: 20px;
         }
         #t-uppertext{
-            text-align: center;
             margin-bottom: 20px;          
         }
         input[type='text']{
@@ -72,6 +69,7 @@
             border-bottom: 1px solid #aaa;
             border-radius: 0px;
             margin: 0px;
+            box-shadow: none;
         }
         input[type='text']:focus{
             border: none;
@@ -79,19 +77,23 @@
             border-radius: 0px;
             box-shadow: none;
         }
-        .t-surr-text-left{
-            text-align: right;
+        .t-surr-text{
+            /*border-bottom:1px solid #aaa ;*/
+            text-shadow: 0px 0px 2px #fff;
+            background: #eee;
+            display: inline-block;
+            min-width: 10px;
         }
         .t-timertext{
-            border-bottom: 1px solid #aaa;
+            /*border-bottom: 1px solid #aaa;*/
             padding-bottom: 7px;
         }
         .t-hor-space{
             font-size: 45px;
         }
         #t-newwindow {
-            text-align: center;
-            margin: 40px;
+            text-align: left;
+            margin: 40px 0px;
         }
         #t-clock{
           font-size: 100px;
@@ -208,8 +210,6 @@
                 $scope.fromto = "from";
                 $scope.lefttext=randev.left;
                 $scope.righttext=randev.right;
-
-
 
                 $scope.$watch('[smonth,sdate,syear,shour,sminute,ssecond,speriod]', function (newv, oldv) {
                   $scope.mstime = moment.utc(newv[0]+"/"+newv[1]+"/"+newv[2]+" "+newv[3]+":"+newv[4]+":"+newv[5]+" "+newv[6], "MMMM/D/YYYY hh:mm:ss a");

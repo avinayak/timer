@@ -1,42 +1,49 @@
-<div id="t-uppertext">
-  <select class="t-counter-types" ng-model='stype'>
-    <option ng-repeat="counter in countertypes" value="{{counter.type}}">{{counter.text}}</option>
-  </select>
-  <span class="t-static-text">{{fromto}}</span>
-  <select class="form-control select t-select" ng-model='smonth'>
-    <option ng-repeat="month in months">{{month}}</option>
-  <select>
-  <select class="form-control select t-select" ng-model='sdate'>
-    <option ng-repeat="date in dates">{{date}}</option>
-  </select>
-  <!-- <select class="form-control select t-select" ng-model='syear'>
-    <option ng-repeat="year in years">{{year}}</option>
-  </select> -->
-  <input id="t-year-field" maxlength="4" class="t-select" type="text" name="usrname" maxlength="10" value="{{year}}" ng-model='syear'>
-  <span class="t-hor-space">&nbsp</span>
-  <select class="form-control select t-select" ng-model='shour'>
-    <option ng-repeat="hour in hours">{{hour}}</option>
-  </select>
-  <span class="t-colonsep"></span>
-  <select class="form-control select t-select" ng-model='sminute'>
-    <option ng-repeat="minute in minutes">{{minute}}</option>
-  </select>
-<!--   <span class="t-colonsep">:</span> -->
-  <select class="form-control select t-select" ng-model='ssecond'>
-    <option ng-repeat="second in seconds">{{second}}</option>
-  </select>
-  <select class="form-control select t-select" ng-model='speriod'>
-    <option ng-repeat="period in periods">{{period}}</option>
-  </select>
+<div>
+  <div id="t-uppertext">
+    <select class="t-counter-types" ng-model='stype'>
+      <option ng-repeat="counter in countertypes" value="{{counter.type}}">{{counter.text}}</option>
+    </select>
+    <span class="t-static-text">{{fromto}}</span>
+    <select class="form-control select t-select" ng-model='smonth'>
+      <option ng-repeat="month in months">{{month}}</option>
+    <select>
+    <select class="form-control select t-select" ng-model='sdate'>
+      <option ng-repeat="date in dates">{{date}}</option>
+    </select>
+    <!-- <select class="form-control select t-select" ng-model='syear'>
+      <option ng-repeat="year in years">{{year}}</option>
+    </select> -->
+    <input id="t-year-field" maxlength="4" class="t-select" type="text" name="usrname" maxlength="10" value="{{year}}" ng-model='syear'>
+    <span class="t-hor-space">&nbsp</span>
+    <select class="form-control select t-select" ng-model='shour'>
+      <option ng-repeat="hour in hours">{{hour}}</option>
+    </select>
+    <span class="t-colonsep"></span>
+    <select class="form-control select t-select" ng-model='sminute'>
+      <option ng-repeat="minute in minutes">{{minute}}</option>
+    </select>
+  <!--   <span class="t-colonsep">:</span> -->
+    <select class="form-control select t-select" ng-model='ssecond'>
+      <option ng-repeat="second in seconds">{{second}}</option>
+    </select>
+    <select class="form-control select t-select" ng-model='speriod'>
+      <option ng-repeat="period in periods">{{period}}</option>
+    </select>
+  </div>
 </div>
-<div >
-  
-</div>
+<!-- <div class="t-format-iconbar">
+  <span>
+    <svg fill="#555" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M9 4v3h5v12h3V7h5V4H9zm-6 8h3v7h3v-7h3V9H3v3z"/>
+    </svg>
+  </span>
+</div> -->
 <br/>
 <h1 class="t-sample-link">
-  <span contenteditable="true" class="t-surr-text t-surr-text-left" type="text" ng-model="lefttext" >{{lefttext}}</span>
+  <span contenteditable="true" class="t-surr-text t-surr-text-left" ng-model="lefttext"></span>
   <span class="t-timertext">{{stimervalue}}</span>
-  <span contenteditable="true" class="t-surr-text t-surr-text-right" type="text" ng-model="righttext">{{righttext}}</span>
+  <span contenteditable="true" class="t-surr-text t-surr-text-right" ng-model="righttext"></span>
 </h1>
 
 <div id="t-newwindow">

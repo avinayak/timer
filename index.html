@@ -38,18 +38,27 @@
             width: auto;
         }
         .t-select{
+            margin: 0px -2px;
             width:auto;
             height: auto;
             border: none;
             margin-bottom: 2px;
-/*            border-bottom: 1px solid #aaa;
-            border-radius: 0px;*/
+            border-bottom: 1px solid #aaa;
+            border-radius: 0px;
+        }
+        select:focus {
+          outline: 0;
+            box-shadow: none !important;
         }
         #t-year-field {
-            width: 32px;
-            box-shadow: none;
-            padding-bottom: 7px;
-            border: none;
+          width: 32px;
+          border-bottom: 1px solid #555;
+          box-shadow: none;
+          padding-bottom: 3px;
+          border: none;
+          border-bottom: 1px solid #aaa;
+          margin-bottom: 3px;
+          margin-left: -2px;
         }
         .t-colonsep{
             font-size: 70px;
@@ -62,7 +71,7 @@
             padding: 20px;
         }
         #t-uppertext{
-            margin-bottom: 20px;          
+            margin-bottom: 20px;     
         }
         input[type='text']{
             border: none;
@@ -79,7 +88,6 @@
         }
         .t-surr-text{
             /*border-bottom:1px solid #aaa ;*/
-            text-shadow: 0px 0px 2px #fff;
             background: #eee;
             display: inline-block;
             min-width: 10px;
@@ -89,7 +97,7 @@
             padding-bottom: 7px;
         }
         .t-hor-space{
-            font-size: 45px;
+            font-size: -3px;
         }
         #t-newwindow {
             text-align: left;
@@ -98,6 +106,10 @@
         #t-clock{
           font-size: 100px;
           line-height: 100px;
+        }
+        .t-format-iconbar{
+            width: 20px;
+            display: inline-block;  
         }
     </style>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.js"></script>
@@ -108,6 +120,39 @@
     <script src='moment-duration-format.js'></script>
     <script>
       var app = angular.module('app', ["ui.router",'angularMoment']);
+      app.directive('contenteditable', function () {
+          return {
+              restrict: 'A', // only activate on element attribute
+              require: '?ngModel', // get a hold of NgModelController
+              link: function (scope, element, attrs, ngModel) {
+                  if (!ngModel) return; // do nothing if no ng-model
+
+                  // Specify how UI should be updated
+                  ngModel.$render = function () {
+                      element.html(ngModel.$viewValue || '');
+                  };
+
+                  // Listen for change events to enable binding
+                  element.on('blur keyup change', function () {
+                      scope.$apply(readViewText);
+                  });
+
+                  // No need to initialize, AngularJS will initialize the text based on ng-model attribute
+
+                  // Write data to the model
+                  function readViewText() {
+                      var html = element.html();
+                      // When we clear the content editable the browser leaves a <br> behind
+                      // If strip-br attribute is provided then we strip this out
+                      if (attrs.stripBr && html == '<br>') {
+                          html = '';
+                      }
+                      ngModel.$setViewValue(html);
+                  }
+              }
+          };
+      });
+
       app.config(function($stateProvider, $urlRouterProvider){
 
         function range(l,h,s){
@@ -235,9 +280,9 @@
             templateUrl: "watch.html",
             controller: function($scope,$stateParams,$interval){
               $scope.type = $stateParams.type;
-              $scope.left = $stateParams.left;
+              $scope.left = unescape($stateParams.left).replace('\&nbsp\;',' ');
               $scope.time = $stateParams.time;
-              $scope.right = $stateParams.right;
+              $scope.right = unescape($stateParams.right).replace('\&nbsp\;',' ');
 
               $interval(function() {
                 $scope.timenow=moment().utc(moment()).local();

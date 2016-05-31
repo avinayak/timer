@@ -1,19 +1,19 @@
 <div>
-  <div id="t-uppertext">
-    <select class="t-counter-types" ng-model='stype'>
-      <option ng-repeat="counter in countertypes" value="{{counter.type}}">{{counter.text}}</option>
-    </select>
-    <span class="t-static-text">{{fromto}}</span>
-    <select class="form-control select t-select" ng-model='smonth'>
-      <option ng-repeat="month in months">{{month}}</option>
-    <select>
-    <select class="form-control select t-select" ng-model='sdate'>
-      <option ng-repeat="date in dates">{{date}}</option>
-    </select>
-    <!-- <select class="form-control select t-select" ng-model='syear'>
-      <option ng-repeat="year in years">{{year}}</option>
-    </select> -->
-    <input id="t-year-field" maxlength="4" class="t-select" type="text" name="usrname" maxlength="10" value="{{year}}" ng-model='syear'>
+  <div id="t-uppertext" class="row">
+    <div class="col-lg-6">
+      <select class="t-counter-types" ng-model='stype'>
+        <option ng-repeat="counter in countertypes" value="{{counter.type}}">{{counter.text}}</option>
+      </select>
+      <span class="t-static-text">{{fromto}}</span>
+      <select class="form-control select t-select" ng-model='smonth'>
+        <option ng-repeat="month in months">{{month}}</option>
+      <select>
+      <select class="form-control select t-select" ng-model='sdate'>
+        <option ng-repeat="date in dates">{{date}}</option>
+      </select>
+      <input id="t-year-field" maxlength="4" class="t-select" type="text" name="usrname" maxlength="10" value="{{year}}" ng-model='syear'>
+    </div>
+    <div class="col-lg-6">
     <span class="t-hor-space">&nbsp</span>
     <select class="form-control select t-select" ng-model='shour'>
       <option ng-repeat="hour in hours">{{hour}}</option>
@@ -29,6 +29,7 @@
     <select class="form-control select t-select" ng-model='speriod'>
       <option ng-repeat="period in periods">{{period}}</option>
     </select>
+    </div>
   </div>
 </div>
 <!-- <div class="t-format-iconbar">
@@ -46,7 +47,7 @@
   <span contenteditable="true" class="t-surr-text t-surr-text-right" ng-model="righttext"></span>
 </h1>
 
-<div id="t-newwindow">
+<div id="t-newwindow" class="row">
   <a href="#{{stype}}/{{lefttext}}/{{mstime.valueOf()}}/{{righttext}}" target="_blank">
     <svg fill="#555" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 0h24v24H0z" fill="none"/>

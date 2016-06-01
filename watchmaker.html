@@ -1,57 +1,71 @@
-<div>
-  <div id="t-uppertext" class="row">
-    <div class="col-lg-6">
-      <select class="t-counter-types" ng-model='stype'>
-        <option ng-repeat="counter in countertypes" value="{{counter.type}}">{{counter.text}}</option>
-      </select>
-      <span class="t-static-text">{{fromto}}</span>
-      <select class="form-control select t-select" ng-model='smonth'>
-        <option ng-repeat="month in months">{{month}}</option>
-      <select>
-      <select class="form-control select t-select" ng-model='sdate'>
-        <option ng-repeat="date in dates">{{date}}</option>
-      </select>
-      <input id="t-year-field" maxlength="4" class="t-select" type="text" name="usrname" maxlength="10" value="{{year}}" ng-model='syear'>
-    </div>
-    <div class="col-lg-6">
-    <span class="t-hor-space">&nbsp</span>
-    <select class="form-control select t-select" ng-model='shour'>
-      <option ng-repeat="hour in hours">{{hour}}</option>
-    </select>
-    <span class="t-colonsep"></span>
-    <select class="form-control select t-select" ng-model='sminute'>
-      <option ng-repeat="minute in minutes">{{minute}}</option>
-    </select>
-  <!--   <span class="t-colonsep">:</span> -->
-    <select class="form-control select t-select" ng-model='ssecond'>
-      <option ng-repeat="second in seconds">{{second}}</option>
-    </select>
-    <select class="form-control select t-select" ng-model='speriod'>
-      <option ng-repeat="period in periods">{{period}}</option>
-    </select>
+<div class="container t-toolbar">
+  <div>
+    <div id="t-uppertext" class="row">
+      <div class="col-lg-8">
+        <select class="t-counter-types" ng-model='stype'>
+          <option ng-repeat="counter in countertypes" value="{{counter.type}}">{{counter.text}}</option>
+        </select>
+        <span class="t-static-text">{{fromto}}</span>
+        <select class="form-control select t-select" ng-model='smonth'>
+          <option ng-repeat="month in months">{{month}}</option>
+        <select>
+        <select class="form-control select t-select" ng-model='sdate'>
+          <option ng-repeat="date in dates">{{date}}</option>
+        </select>
+        <input id="t-year-field" maxlength="4" class="t-select" type="text" name="usrname" maxlength="10" value="{{year}}" ng-model='syear'>
+          <span class="t-hor-space">&nbsp</span>
+          <select class="form-control select t-select" ng-model='shour'>
+            <option ng-repeat="hour in hours">{{hour}}</option>
+          </select>
+          <select class="form-control select t-select" ng-model='sminute'>
+            <option ng-repeat="minute in minutes">{{minute}}</option>
+          </select>
+        <!--   <span class="t-colonsep">:</span> -->
+          <select class="form-control select t-select" ng-model='ssecond'>
+            <option ng-repeat="second in seconds">{{second}}</option>
+          </select>
+          <select class="form-control select t-select" ng-model='speriod'>
+            <option ng-repeat="period in periods">{{period}}</option>
+          </select>
+      </div>
+      <div class="col-lg-4">
+        <div>
+          <span ng-click="toggle_sizes()">
+            <svg fill="#555" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M9 4v3h5v12h3V7h5V4H9zm-6 8h3v7h3v-7h3V9H3v3z"/>
+            </svg>
+          </span>
+          <span>
+            <a href="#{{stype}}/{{lefttext}}/{{mstime.valueOf()}}/{{righttext}}" target="_blank">
+              <svg fill="#555" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+              </svg>
+            </a>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-<!-- <div class="t-format-iconbar">
-  <span>
-    <svg fill="#555" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 0h24v24H0z" fill="none"/>
-        <path d="M9 4v3h5v12h3V7h5V4H9zm-6 8h3v7h3v-7h3V9H3v3z"/>
-    </svg>
-  </span>
-</div> -->
-<br/>
-<h1 class="t-sample-link">
-  <span contenteditable="true" class="t-surr-text t-surr-text-left" ng-model="lefttext"></span>
-  <span class="t-timertext">{{stimervalue}}</span>
-  <span contenteditable="true" class="t-surr-text t-surr-text-right" ng-model="righttext"></span>
-</h1>
+<div class="outer">    
+    <div class="middle">
+        <div class="inner container">
+            <br/>
+            <h1 class="t-sample-link">
+              <span contenteditable="true" ng-style="{'font-size':styles[style_index].fontsize}" class="t-surr-text t-surr-text-left" ng-model="lefttext"></span>
+              <span class="t-timertext" ng-style="{'font-size':styles[style_index].fontsize}">{{stimervalue}}</span>
+              <span contenteditable="true" ng-style="{'font-size':styles[style_index].fontsize}" class="t-surr-text t-surr-text-right" ng-model="righttext"></span>
+            </h1>
 
-<div id="t-newwindow" class="row">
-  <a href="#{{stype}}/{{lefttext}}/{{mstime.valueOf()}}/{{righttext}}" target="_blank">
-    <svg fill="#555" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 0h24v24H0z" fill="none"/>
-        <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
-    </svg>
-  </a>
+            <div id="t-newwindow" class="row">
+
+            </div>
+        </div>
+    </div>
 </div>
+
+<!-- <div class="t-format-iconbar">
+
+</div> -->

@@ -1,7 +1,7 @@
 <div class="container t-toolbar">
   <div>
     <div id="t-uppertext" class="row">
-      <div class="col-sm-7 t-toolbar-frag">
+      <div class="col-sm-11 t-toolbar-frag">
         <select class="t-counter-types" ng-model='stype'>
           <option ng-repeat="counter in countertypes" value="{{counter.type}}">{{counter.text}}</option>
         </select>
@@ -28,41 +28,8 @@
             <option ng-repeat="period in periods">{{period}}</option>
           </select>
       </div>
-      <div class="col-sm-5 t-toolbar-frag">
+      <div class="col-sm-1 t-toolbar-frag">
         <div>
-          <span style="padding: 0px 5px;" ng-click="toggle_sizes()">
-            <svg fill="#555" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M9 4v3h5v12h3V7h5V4H9zm-6 8h3v7h3v-7h3V9H3v3z"/>
-            </svg>
-          </span>
-          <span style="padding: 0px 5px;" ng-click="toggle_sizes()">
-            <svg fill="#555" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 15H3v2h12v-2zm0-8H3v2h12V7zM3 13h18v-2H3v2zm0 8h18v-2H3v2zM3 3v2h18V3H3z"/>
-                <path d="M0 0h24v24H0z" fill="none"/>
-            </svg>
-          </span>
-          <span style="padding: 0px 5px;" ng-click="toggle_sizes()">
-            <svg fill="#555" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 15v2h10v-2H7zm-4 6h18v-2H3v2zm0-8h18v-2H3v2zm4-6v2h10V7H7zM3 3v2h18V3H3z"/>
-                <path d="M0 0h24v24H0z" fill="none"/>
-            </svg>
-          </span>
-          <span style="padding: 0px 5px;" ng-click="toggle_sizes()">
-            <svg fill="#555" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 21h18v-2H3v2zm6-4h12v-2H9v2zm-6-4h18v-2H3v2zm6-4h12V7H9v2zM3 3v2h18V3H3z"/>
-                <path d="M0 0h24v24H0z" fill="none"/>
-            </svg>
-          </span>
-          <span style="border-radius: 100px;background: #481;padding: 2px 10px;margin: 5px;"></span>
-          <span style="border-radius: 100px;background: #000;padding: 2px 10px;margin: 5px;"></span>
-          <span >
-              <select class="form-control select t-select">
-                  <option>Monospace</option>
-                  <option>Serif</option>
-                  <option>Sans-Serif</option>
-              </select> 
-          </span>
           <span style="padding: 0px 10px;">
             <a href="#{{stype}}/{{lefttext}}/{{mstime.valueOf()}}/{{righttext}}" target="_blank" text="Open timer in a new window" >
               <svg fill="#555" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">

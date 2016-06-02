@@ -1,7 +1,9 @@
 <div class="t-toolbar container">
   <div>
     <div id="t-uppertext" class="row">
+
       <div class="col-sm-11 t-toolbar-frag">
+
         <select class="t-counter-types" ng-model='stype'>
           <option ng-repeat="counter in countertypes" value="{{counter.type}}">{{counter.text}}</option>
         </select>
@@ -27,17 +29,19 @@
           <select class="form-control select t-select" ng-model='speriod'>
             <option ng-repeat="period in periods">{{period}}</option>
           </select>
+          
       </div>
       <div class="col-sm-1 t-toolbar-frag">
         <div>
-          <span style="padding: 0px 10px;">
-            <a href="#{{stype}}/{{lefttext}}/{{mstime.valueOf()}}/{{righttext}}" target="_blank" text="Open timer in a new window" >
-              <svg style="padding-top: 4px;margin-top: -3px;" fill="#555" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0 0h24v24H0z" fill="none"/>
-                  <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
-              </svg>
-            </a>
-          </span>
+            <span style="position: relative;
+        top: 5px;">
+              <a href="#{{stype}}/{{lefttext}}/{{mstime.valueOf()}}/{{righttext}}" target="_blank" text="Open timer in a new window" >
+                <svg style="padding-top: 4px;margin-top: -3px;" fill="#555" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+                </svg>
+              </a>
+            </span>
         </div>
       </div>
     </div>

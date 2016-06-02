@@ -1,4 +1,6 @@
-# Timer
+Timer
+=====
 A minimalist bookmarkable timer
 
-[Preview](http://i.imgur.com/bMfj94m.gif "Logo Title Text 1")
+![enter image description here](http://i.imgur.com/bMfj94m.gif)
+
